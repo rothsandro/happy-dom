@@ -1087,6 +1087,16 @@ describe('QuerySelector', () => {
 			expect(div1.querySelector('[attr1]') === span).toBe(true);
 		});
 
+		it('Returns an element when selector starts with a new line', () => {
+			const div = document.createElement('div');
+			const div2 = document.createElement('div');
+
+			div2.className = 'baz';
+			div.appendChild(div2);
+
+			expect(div.querySelector('\n.baz') === div2).toBe(true);
+		});
+
 		it('Returns the first element matching "div > div > span".', () => {
 			const container = document.createElement('div');
 			container.innerHTML = QuerySelectorHTML;
